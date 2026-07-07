@@ -15,7 +15,7 @@ NODE_TYPES = [
 
 
 pc.defineParameter("NODE_TYPE", "Node type",
-                    portal.ParameterType.NODETYPE, NODE_TYPES[0],
+                    portal.ParameterType.NODETYPE, NODE_TYPES[0][0],
                     NODE_TYPES,
                     longDescription="Select one node.")
 
