@@ -5,10 +5,20 @@ import geni.rspec.pg as pg
 
 # Create a portal context, needed to defined parameters
 pc = portal.Context()
-
 # Create a Request object to start building the RSpec.
 request = pc.makeRequestRSpec()
- 
+
+NODE_TYPES = [
+    ("c6525-25g", "c6525-25g"),
+    ("c6525-100g", "c6525-100g"),
+]
+
+
+pc.defineParameter("NODE_TYPE", "Node type",
+                    portal.ParameterType.NODETYPE, NODE_TYPES[0],
+                    NODE_TYPES,
+                    longDescription="Select one node.")
+
 # Add a raw PC to the request.
 node = request.RawPC("node")
 # Set the OS image for the node.
