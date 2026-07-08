@@ -11,6 +11,8 @@ request = pc.makeRequestRSpec()
 NODE_TYPES = [
     ("c6525-25g", "c6525-25g"),
     ("c6525-100g", "c6525-100g"),
+    ("r6615", "r6615"),
+    ("sm110p", "sm110p"),
 ]
 
 
