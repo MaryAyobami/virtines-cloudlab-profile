@@ -17,18 +17,29 @@ NODE_TYPES = [
     ("d760p", "d760p"),
 ]
 
-
+OS_IMAGES = [
+    ("urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD",
+     "Ubuntu 20.04"),
+    ("urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD",
+     "Ubuntu 22.04"),
+]
 pc.defineParameter("NODE_TYPE", "Node type",
                     portal.ParameterType.STRING, NODE_TYPES[0][0],
                     NODE_TYPES,
                     longDescription="Select the node type.")
+
+pc.defineParameter(
+    "OS_IMAGE", "OS Image",
+    portal.ParameterType.IMAGE, OS_IMAGES[0][0], OS_IMAGES,
+    longDescription="Select an image.")
+
 
 params = pc.bindParameters()
 
 # Add a raw PC to the request.
 node = request.RawPC("node")
 # Set the OS image for the node.
-node.disk_image = 'urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD'
+node.disk_image = params.OS_IMAGE
 node.hardware_type = params.NODE_TYPE
 
 # Print the RSpec to the enclosing page.
